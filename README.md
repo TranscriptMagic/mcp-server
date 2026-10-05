@@ -1,11 +1,11 @@
 # TranscriptMagic MCP Server
 
-Remote [Model Context Protocol](https://modelcontextprotocol.io) server that lets AI assistants generate transcripts from **YouTube, TikTok, Instagram, and Facebook** videos.
+Remote [Model Context Protocol](https://modelcontextprotocol.io) server that lets AI assistants generate transcripts from **YouTube, TikTok, Instagram, Facebook, LinkedIn, Rumble, and X (Twitter)** videos, **Twitch and Kick** clips, and **Spotify and Apple Podcasts** episodes.
 
 - **Hosted:** `https://mcp.transcriptmagic.com/mcp`
 - **Transport:** Streamable HTTP (and legacy SSE)
 - **Auth:** OAuth 2.0 (Sign in with Google)
-- **Pricing:** 1 credit per transcript. New accounts get free credits — see [transcriptmagic.com](https://transcriptmagic.com).
+- **Pricing:** 1 credit per video or clip transcript. Podcasts (Plus & Pro plans) are 10 credits per audio-hour. New accounts get free credits — see [transcriptmagic.com](https://transcriptmagic.com).
 
 No installation required. Connect it to Claude Desktop, Cursor, Windsurf, Cline, or any MCP-compatible client using the URL above.
 
@@ -19,10 +19,17 @@ No installation required. Connect it to Claude Desktop, Cursor, Windsurf, Cline,
 | `transcribe_tiktok` | Transcript from a TikTok URL (`tiktok.com/@user/video/...` or `vm.tiktok.com`). | 1 credit |
 | `transcribe_instagram` | Transcript from an Instagram URL (`/reel/`, `/p/`, `/tv/`). | 1 credit |
 | `transcribe_facebook` | Transcript from a Facebook URL (`facebook.com/watch`, `fb.watch`, Reels). | 1 credit |
+| `transcribe_linkedin` | Transcript from a public LinkedIn post with video (`linkedin.com/posts/...`, `/feed/update/...`). | 1 credit |
+| `transcribe_rumble` | Transcript from a Rumble video with captions (`rumble.com/v....html`). | 1 credit |
+| `transcribe_twitter` | Transcript from an X (Twitter) video tweet (`x.com/.../status/...`), under 2 minutes. | 1 credit |
+| `transcribe_twitch` | Transcript from a Twitch **clip** (`clips.twitch.tv/...` or `twitch.tv/{channel}/clip/...`). Clips only, not VODs or live streams. | 1 credit |
+| `transcribe_kick` | Transcript from a Kick **clip** (`kick.com/{channel}/clips/...` or `kick.com/{channel}?clip=...`). Clips only, not VODs or live streams. | 1 credit |
+| `transcribe_podcast` | Transcript from a Spotify or Apple Podcasts episode. Long episodes return a job ID to check with `get_podcast_status`. | 10 credits / audio-hour (Plus & Pro) |
+| `get_podcast_status` | Checks a podcast job and returns the transcript when it's ready. | Free |
 | `get_credit_balance` | Returns remaining credits and current plan. | Free |
 | `list_recent_transcripts` | Lists recent transcripts saved to your account, with previews. | Free |
 
-Public videos only. Does not work on private, age-restricted, or login-walled videos.
+Public videos only. Does not work on private, age-restricted, or login-walled videos. Twitch and Kick clips without captions are transcribed with AI automatically, at the same 1-credit price.
 
 ---
 
@@ -68,6 +75,8 @@ Point it at `https://mcp.transcriptmagic.com/mcp` (streamable HTTP). For older c
 
 > "Get the TikTok transcript at vm.tiktok.com/… and turn it into a Twitter thread."
 
+> "Transcribe this Twitch clip and write a YouTube Shorts caption for it: https://clips.twitch.tv/…"
+
 > "List my last 10 transcripts and summarize the Instagram ones."
 
 > "How many credits do I have left?"
@@ -78,7 +87,7 @@ Point it at `https://mcp.transcriptmagic.com/mcp` (streamable HTTP). For older c
 
 Credits are tied to your TranscriptMagic account. Sign in once via OAuth from your MCP client, then top up at [transcriptmagic.com/dashboard/account](https://transcriptmagic.com/dashboard/account) when you run low. New accounts come with free credits to try the server.
 
-`get_credit_balance` and `list_recent_transcripts` are free and never consume credits.
+`get_credit_balance`, `list_recent_transcripts`, and `get_podcast_status` are free and never consume credits.
 
 ---
 

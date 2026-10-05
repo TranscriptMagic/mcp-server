@@ -1,7 +1,7 @@
 {
   "name": "transcript-magic",
   "version": "1.0.0",
-  "description": "Generate transcripts from YouTube, TikTok, Instagram, and Facebook videos.",
+  "description": "Video transcripts from YouTube, TikTok, Instagram, Facebook, X, LinkedIn, Rumble, Twitch, and Kick.",
   "author": {
     "name": "TranscriptMagic",
     "email": "hello@transcriptmagic.com",
@@ -19,6 +19,12 @@
     "tiktok",
     "instagram",
     "facebook",
+    "linkedin",
+    "rumble",
+    "twitter",
+    "twitch",
+    "kick",
+    "podcast",
     "transcription",
     "video-to-text",
     "captions"
